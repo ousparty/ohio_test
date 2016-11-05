@@ -9,3 +9,9 @@ body {
 	/*width: 20px;*/
 	
 }
+
+.axis path, .axis line{
+	stroke: #000;
+	stroke-width: 1px;
+	shape-rendering: crispEdges;
+}

@@ -23,7 +23,7 @@
   	return Math.random() * 50;
   });
 
-  var margin = {top: 0, right: 0, bottom: 30, left: 40};
+  var margin = {top: 200, right: 0, bottom: 100, left: 60};
 
   var w = 600 - margin.left - margin.right, 
       h = 400 - margin.top - margin.bottom;
@@ -38,9 +38,29 @@
     .domain(dataset)
     .rangeBands([0, w], 0.5, 0.3);
 
+  var xAxis = d3.svg.axis()
+     .scale(xScale)
+     .orient('bottom')
+     .ticks(5);
+
+     svg.append('g')
+     .attr('class', 'x axis')
+     .attr('transform', 'translate(0, ' + (h+20) + ')')
+     .call(xAxis);
+
   var yScale = d3.scale.linear()
     .domain([0, d3.max(dataset) * 1.1])
-    .range([0, h]);
+    .range([h, 0]);
+
+  var yAxis = d3.svg.axis()
+     .scale(yScale)
+     .orient('left')
+
+
+     svg.append('g')
+     .attr('class', 'y axis')
+     .attr('transform', 'translate (-20, 0)')
+     .call(yAxis);
 
   var colorScale = d3.scale.quantile()
     .domain([0, dataset.length / 4, dataset.length])
