@@ -19,7 +19,11 @@
 
   <script type="text/javascript">
   	
-  var dataset = [5, 10, 15, 20, 25];
+  var dataset = _.map(_.range(15), function(i){
+  	return Math.random() * 50;
+  });
+
+
   var w = 400, h = 300;
 
   var svg = d3.select('#chartArea').append('svg')
@@ -27,7 +31,7 @@
     .attr('height', h);
 
   var yScale = d3.scale.linear()
-    .domain([0, 50])
+    .domain([0, d3.max(dataset) * 1.1])
     .range([0, h]);
 
   var multiplier = 5;
