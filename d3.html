@@ -19,16 +19,20 @@
 
   <script type="text/javascript">
   	
-  var dataset = _.map(_.range(150), function(i){
+  var dataset = _.map(_.range(100), function(i){
   	return Math.random() * 50;
   });
 
+  var margin = {top: 0, right: 0, bottom: 30, left: 40};
 
-  var w = 400, h = 300;
+  var w = 600 - margin.left - margin.right, 
+      h = 400 - margin.top - margin.bottom;
 
   var svg = d3.select('#chartArea').append('svg')
-    .attr('width', w)
-    .attr('height', h);
+    .attr('width', w + margin.left + margin.right)
+    .attr('height', h + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', 'translate(' + margin.left +', ' + margin.top + ')' );
 
   var xScale = d3.scale.ordinal()
     .domain(dataset)
@@ -37,6 +41,10 @@
   var yScale = d3.scale.linear()
     .domain([0, d3.max(dataset) * 1.1])
     .range([0, h]);
+
+  var colorScale = d3.scale.quantile()
+    .domain([0, dataset.length / 4, dataset.length])
+    .range(['gray', 'purple',]);
 
   var multiplier = 5;
 
@@ -54,6 +62,9 @@
      .attr('width', xScale.rangeBand())
      .style('height', function(d){
      	return yScale(d);
+     })
+     .attr('fill', function(d, i){
+     	return colorScale(i);
      });
 
 
