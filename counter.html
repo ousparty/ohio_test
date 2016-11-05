@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/counter.css">
+	</head>
+
+	<body>
+
+ <div class="catcounter">
+ 	<img id="bill" src="http://www.fillmurray.com/g/600/500">
+	<h3>Bill Murray is awsome</h3>
+
+	<div>
+	<button id="decrease"> - </button>
+	<button id="increase"> + </button>
+	</div>
+
+  </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+    var picIndex = 500;
+
+    $('button').click(function(){
+    	if($(this).attr('id')==='increase'){
+    		picIndex = picIndex + 1;
+    	} else {
+    		picIndex = picIndex - 1;
+    	}
+		var url = "http://www.fillmurray.com/g/600/" + picIndex;
+
+    	$('#bill').attr("src", url);
+    		console.log(picIndex)	
+
+    // do stuff
+    // console.log('button click');
+    });
+
+
+
+  </script>
+
+
+
+
+
+	</body>
+
+
+
+</html>

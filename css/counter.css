@@ -1,0 +1,11 @@
+body {
+	background-color: green;
+}
+
+.catcounter {
+	background-color: lightgreen;
+	margin: 100px auto;
+	font-size: 2em;
+	width: 50%;
+	text-align: center;
+}
